@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'default' %}">Fun Recorder</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'default' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div>
+        {% if request.user.is_authenticated %}
+            <button class="btn btn-info mr-1" type="submit"><a href="" style="text-decoration:none; color:white;">{{request.user}}</a></button>
+            <button class="btn btn-primary mr-1" type="submit"><a href="{% url 'signout' %}" style="text-decoration:none; color:white;">Signout</a></button>      
+        {% else %}
+            <button class="btn btn-info mr-1 " type="submit"><a href="{% url 'signin' %}" style="text-decoration:none; color:white;">Signin</a></button>
+            <button class="btn btn-primary mr-1 space-x-3.5" type="submit"><a href="{% url 'signup' %}" style="text-decoration:none; color:white;">Signup</a></button>      
+        {% endif %}    
+        <br>
+    
+      </div>
+    </div>
+  </nav>
